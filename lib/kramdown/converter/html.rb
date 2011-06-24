@@ -276,7 +276,7 @@ module Kramdown
         number = @footnote_counter
         @footnote_counter += 1
         @footnotes << [el.options[:name], el.value]
-        "<sup id=\"fnref:#{el.options[:name]}\"><a href=\"#fn:#{el.options[:name]}\" rel=\"footnote\">#{number}</a></sup>"
+        "<sup id=\"fnref:#{el.options[:name]}\"><a href=\"#fn:#{el.options[:name]}\" title=\"#{el.value.inspect.gsub(/(.*?kd:text ")(.*?)(".*?)/,'BLUB\2BLUB').gsub(/(^.*)(BLUB.*$)/,'\1').gsub('BLUB','').gsub('\303\244','&auml;').gsub('\303\274','&uuml;').gsub('\303\266','&ouml;').gsub('\303\204','&Auml;').gsub('\303\234','&Uuml;').gsub('\303\226','&Ouml;').gsub('\303\237','&szlig;')}\" rel=\"footnote\">#{number}</a></sup>"
       end
 
       def convert_raw(el, indent)
